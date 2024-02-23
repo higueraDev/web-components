@@ -15,25 +15,28 @@ class PollComponent extends HTMLElement {
 		super();
 
 		this._attached = false;
-		this._selected = null;
-
 		this._data = null;
+		this._selected = null;
+		this._listener = null;
 
+		// Elements
+		this._$root = this.attachShadow({ mode: "open" });
 		this._$question = null;
 		this._$answers = null;
+	}
+
+	connectedCallback() {
+		this._attached = true;
 		this._listener = (event) => {
 			this._$answers.querySelectorAll("li").forEach(($li, index) => {
 				if ($li === event.target) this.selected = index;
 			});
 		};
-	}
 
-	connectedCallback() {
-		this._attached = true;
 		$template.then((files) => {
-			this.appendChild(files.content.cloneNode(true));
-			this._$question = this.querySelector("h2");
-			this._$answers = this.querySelector("ul");
+			this._$root.appendChild(files.content.cloneNode(true));
+			this._$question = this._$root.querySelector("h2");
+			this._$answers = this._$root.querySelector("ul");
 			this._$answers.addEventListener("click", this._listener);
 			this._render();
 		});
