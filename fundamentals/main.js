@@ -3,6 +3,7 @@ import { DivisionElement } from "./components/DivisionElement.js";
 import { MultiplyElement } from "./components/MultiplyElement.js";
 import { MyCustomElement } from "./components/MyCustomElement.js";
 import { listItem, shadowDiv } from "./templates/index.js";
+import * as htmlImports from "./imports/htmlImports.js";
 
 const elements = [
 	{
