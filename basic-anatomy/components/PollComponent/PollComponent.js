@@ -5,7 +5,7 @@ const pollData = {
 	answers: ["JavaScript", "Python", "Java", "C++", "Ruby", "Other"],
 };
 
-const $template = renderTemplate(
+const getTemplate = renderTemplate(
 	"./components/PollComponent/PollComponent.template.html",
 	"./components/PollComponent/PollComponent.styles.css"
 );
@@ -33,8 +33,8 @@ class PollComponent extends HTMLElement {
 			});
 		};
 
-		$template.then((files) => {
-			this._$root.appendChild(files.content.cloneNode(true));
+		getTemplate.then((template) => {
+			this._$root.appendChild(template.content.cloneNode(true));
 			this._$question = this._$root.querySelector("h2");
 			this._$answers = this._$root.querySelector("ul");
 			this._$answers.addEventListener("click", this._listener);

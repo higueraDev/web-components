@@ -1,6 +1,6 @@
-import { renderTemplate } from "../../utils/renderTemplate.js";
+import { renderTemplate } from "/utils/renderTemplate.js";
 
-const $template = renderTemplate(
+const getTemplate = renderTemplate(
 	"./components/MyComponent/MyComponent.template.html",
 	"./components/MyComponent/MyComponent.styles.css"
 );
@@ -45,8 +45,8 @@ class MyComponent extends HTMLElement {
 	}
 
 	connectedCallback() {
-		$template.then((files) => {
-			this.appendChild(files.content.cloneNode(true));
+		getTemplate.then((template) => {
+			this.appendChild(template.content.cloneNode(true));
 			this._$quote = this.querySelector("h2");
 			this._$author = this.querySelector("p");
 			this._render();
