@@ -23,27 +23,27 @@ class StarRating extends HTMLElement {
 		const listener = (event) => {
 			if (this._disabled) return;
 			this.value = event.target.getAttribute("data-value");
+			this._render();
 		};
 
 		getFiles.then((template) => {
 			this._$root.appendChild(template.content.cloneNode(true));
 			this._$container = this._$root.querySelector(".container");
 			this._$container.addEventListener("click", listener);
+			this._disabled = this.getAttribute("disabled") !== null;
+			this._render();
 		});
-
-		this._disabled = this.getAttribute("disabled") !== null;
-		this._value = this.getAttribute("value") || 0;
-		this._render();
 	}
 
 	static get observedAttributes() {
-		return ["disabled"];
+		return ["disabled", "value"];
 	}
 
 	set value(value) {
-		if (this._disabled) return;
-		this._value = value;
-		this._render();
+		if (value === null) return;
+		if (value === this._value) this._value = 0;
+		else this._value = value;
+		this.dispatchEvent(new Event("change"));
 	}
 
 	get value() {
@@ -55,14 +55,17 @@ class StarRating extends HTMLElement {
 			disabled: () => {
 				this._disabled = newValue !== null;
 			},
+			value: () => {
+				this.value = newValue;
+				this._render();
+			},
 		};
 
 		if (oldValue !== newValue) return attributes[attr]();
 	}
 
-	_render() {
+	handleSelection() {
 		if (this._$container === null) return;
-
 		this._$container.querySelectorAll("span").forEach((star) => {
 			const isSelectedStar =
 				this.value == star.getAttribute("data-value");
@@ -72,6 +75,10 @@ class StarRating extends HTMLElement {
 				star.classList.remove("selected");
 			else star.classList.add("selected");
 		});
+	}
+
+	_render() {
+		this.handleSelection();
 	}
 
 	disconnectedCallback() {
