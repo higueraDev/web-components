@@ -13,7 +13,9 @@ span {
 }
 
 span:hover,
-span:hover ~ span {
+span:hover ~ span,
+span.selected,
+span.selected ~ span {
 	color: gold;
 }
 
