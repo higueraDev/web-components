@@ -1,0 +1,26 @@
+.container {
+	width: fit-content;
+	cursor: pointer;
+	unicode-bidi: bidi-override;
+	direction: rtl;
+}
+
+span {
+	font-size: 24px;
+	width: fit-content;
+	letter-spacing: -3px;
+	color: gray;
+}
+
+span:hover,
+span:hover ~ span {
+	color: gold;
+}
+
+:host([disabled]) .container {
+	cursor: not-allowed;
+}
+
+:host([disabled]) span {
+	pointer-events: none;
+}
