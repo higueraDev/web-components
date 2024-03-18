@@ -17,10 +17,13 @@ class StarRating extends HTMLElement {
 		// data
 		this._disabled = false;
 		this._value = 0;
+
+		// listeners
+		this._listener = null;
 	}
 
 	connectedCallback() {
-		const listener = (event) => {
+		this._listener = (event) => {
 			if (this._disabled) return;
 			this.value = event.target.getAttribute("data-value");
 			this._render();
@@ -29,7 +32,7 @@ class StarRating extends HTMLElement {
 		getFiles.then((template) => {
 			this._$root.appendChild(template.content.cloneNode(true));
 			this._$container = this._$root.querySelector(".container");
-			this._$container.addEventListener("click", listener);
+			this._$container.addEventListener("click", this._listener);
 			this._disabled = this.getAttribute("disabled") !== null;
 			this._render();
 		});
@@ -82,7 +85,7 @@ class StarRating extends HTMLElement {
 	}
 
 	disconnectedCallback() {
-		this._$container.removeEventListener("click", listener);
+		this._$container.removeEventListener("click", this._listener);
 	}
 }
 
