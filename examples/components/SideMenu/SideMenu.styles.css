@@ -47,7 +47,7 @@
 	background-color: #4caf50;
 }
 
-.title {
+.content-title-slot {
 	flex: 1;
 	display: flex;
 	align-items: center;
@@ -68,13 +68,14 @@
 	color: white;
 }
 
-.link-list {
-	list-style: none;
+.content-slot {
+	padding-left: 20px;
 }
 
-.link {
+.content-slot::slotted(.link) {
 	display: block;
-	padding: 1em;
+	padding-block: 1em;
+	padding-inline: 2em;
 	text-decoration: none;
 	color: #333;
 }
