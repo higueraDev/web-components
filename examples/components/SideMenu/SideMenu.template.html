@@ -1,5 +1,7 @@
 <div class="controls">
-	<button type="button" class="control-button" data-action="open">Open Menu</button>
+	<button type="button" class="control-button" data-action="open">
+		Open Menu
+	</button>
 	<button type="button" class="control-button" data-action="close">
 		Close Menu
 	</button>
@@ -7,15 +9,13 @@
 <aside class="frame" data-action="close">
 	<nav class="container">
 		<header class="content-title">
-			<h1 class="title">Menu</h1>
-			<button type="button" class="close" data-action="close">&#10006;</button>
+			<slot name="title" class="content-title-slot">Menu</slot>
+			<button type="button" class="close" data-action="close">
+				&#10006;
+			</button>
 		</header>
 		<main class="content">
-			<ul class="link-list">
-				<li><a class="link" href="#">Home</a></li>
-				<li><a class="link" href="#">About</a></li>
-				<li><a class="link" href="#">Services</a></li>
-			</ul>
+			<slot name="content" class="content-slot"></slot>
 		</main>
 	</nav>
 </aside>
