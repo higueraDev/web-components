@@ -1,0 +1,4 @@
+star-rating {
+	--star-default: #ccc;
+	--star-selected: #ff0;
+}
