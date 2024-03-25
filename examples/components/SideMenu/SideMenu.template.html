@@ -7,14 +7,14 @@
 	</button>
 </div>
 <aside class="frame" data-action="close">
-	<nav class="container">
-		<header class="content-title">
+	<nav class="container" part="container">
+		<header class="content-title" part="content-title">
 			<slot name="title" class="content-title-slot">Menu</slot>
 			<button type="button" class="close" data-action="close">
 				&#10006;
 			</button>
 		</header>
-		<main class="content">
+		<main class="content" part="content">
 			<slot name="content" class="content-slot"></slot>
 		</main>
 	</nav>

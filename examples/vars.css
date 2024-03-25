@@ -2,3 +2,18 @@ star-rating {
 	--star-default: #ccc;
 	--star-selected: #ff0;
 }
+
+side-menu {
+	&::part(container) {
+		width: 100%;
+		background-color: darkgreen;
+	}
+	&::part(content-title) {
+		background-color: darkslategray;
+		color: white;
+		font-size: 2em;
+	}
+	&::part(content) {
+		color: violet;
+	}
+}
