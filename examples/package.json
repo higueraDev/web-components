@@ -1,0 +1,16 @@
+{
+	"name": "examples",
+	"version": "1.0.0",
+	"description": "",
+	"main": "main.js",
+	"scripts": {
+		"transpile": "babel src -d dist --presets=@babel/env"
+	},
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@babel/cli": "^7.24.1",
+		"@babel/core": "^7.24.3",
+		"@babel/preset-env": "^7.24.3"
+	}
+}

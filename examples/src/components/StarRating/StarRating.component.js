@@ -1,4 +1,4 @@
-import { renderTemplate } from "../../../utils/renderTemplate.js";
+import { renderTemplate } from "../../../../utils/renderTemplate.js";
 
 const getFiles = renderTemplate(
 	"components/StarRating/StarRating.template.html",
